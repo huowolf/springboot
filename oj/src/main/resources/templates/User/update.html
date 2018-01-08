@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>learn Resources</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div style="text-align: center;margin:0 auto;width: 800px; ">
+    <h1>用户修改测试</h1>
+    <form method="post" th:action="@{/user/update}" th:object="${user}">
+         <input type="hidden" name="userId" th:value="*{userId}"/>
+        <table width="80%" border="1">
+            <tr>
+                <td>用户名</td>
+                <td><input type="text" name="userName" th:value="*{userName}"  placeholder="userName"/></td>
+            </tr>
+            <tr>
+                <td>邮箱</td>
+                <td><input type="text" name="email" th:value="*{email}"  placeholder="email"/></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="text" name="password" th:value="*{password}" placeholder="password"/></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="提交"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
