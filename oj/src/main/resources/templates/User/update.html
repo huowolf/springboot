@@ -7,7 +7,7 @@
 <body>
 <div style="text-align: center;margin:0 auto;width: 800px; ">
     <h1>用户修改测试</h1>
-    <form method="post" th:action="@{/user/update}" th:object="${user}">
+    <form method="post" th:action="@{/user/${saveOrUpdate}?update}" th:object="${user}">
          <input type="hidden" name="userId" th:value="*{userId}"/>
         <table width="80%" border="1">
             <tr>
@@ -20,7 +20,10 @@
             </tr>
             <tr>
                 <td>密码</td>
-                <td><input type="text" name="password" th:value="*{password}" placeholder="password"/></td>
+                <td>
+                    <input type="password" name="password" th:value="*{password}" placeholder="password" th:errorclass="fieldError"/>
+                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">密码不能为空</span>
+                </td>
             </tr>
             <tr>
                 <td colspan="2" align="center"><input type="submit" value="提交"/></td>

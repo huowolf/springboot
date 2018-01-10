@@ -3,6 +3,7 @@ package com.huowolf.domain;
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ public class User implements Serializable{
 
     private String userName;
 
+    @NotBlank(message = "密码不能为空")
     private String password;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
