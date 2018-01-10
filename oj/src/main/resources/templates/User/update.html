@@ -7,7 +7,7 @@
 <body>
 <div style="text-align: center;margin:0 auto;width: 800px; ">
     <h1>用户修改测试</h1>
-    <form method="post" th:action="@{/user/${saveOrUpdate}?update}" th:object="${user}">
+    <form method="post" th:action="@{/user/update}" th:object="${user}">
          <input type="hidden" name="userId" th:value="*{userId}"/>
         <table width="80%" border="1">
             <tr>
