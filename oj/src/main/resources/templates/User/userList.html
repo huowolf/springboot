@@ -15,7 +15,7 @@
             <td colspan="2" align="center">操作</td>
         </tr>
         <tr th:each="user : ${userList}">
-            <td th:text="${user.userName}"></td>
+            <td th:text="${user.username}"></td>
             <td th:text="${user.email}"></td>
             <td th:text="${user.registerTime}"></td>
             <td><a th:href="@{/user/toUpdate/{id}(id=${user.userId})}">修改</a> </td>

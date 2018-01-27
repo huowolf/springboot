@@ -43,7 +43,7 @@ public class UserController {
             }
             return "user/saveUser";
         }
-        user.setLastLoginTime(new Date());
+        //user.setLastLoginTime(new Date());
         userService.save(user);
         return "redirect:list";
     }
@@ -58,7 +58,7 @@ public class UserController {
     @RequestMapping("update")
     public String update(User user){
         User user1 = userService.findById(user.getUserId());
-        user1.setUserName(user.getUserName());
+        user1.setUsername(user.getUsername());
         user1.setPassword(user.getPassword());
         user1.setEmail(user.getEmail());
         userService.save(user1);
@@ -70,4 +70,6 @@ public class UserController {
         userService.delete(id);
         return "redirect:list";
     }
+
+
 }

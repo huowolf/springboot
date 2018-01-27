@@ -23,7 +23,7 @@ public class UserRepositoryTest {
 	@Test
 	public void save() {
 		User user = new User();
-		user.setUserName("test");
+		user.setUsername("test");
 		user.setPassword("11111111");
 		user.setEmail("xxx@qq.com");
 		user.setLastLoginTime(new Date());

@@ -5,9 +5,14 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -18,7 +23,7 @@ import java.util.Date;
 @Data
 @DynamicInsert
 @DynamicUpdate
-public class User implements Serializable{
+public class User implements Serializable,UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +31,8 @@ public class User implements Serializable{
 
     private String email;
 
-    private String userName;
+    @NotNull
+    private String username;
 
     @NotBlank(message = "密码不能为空")
     private String password;
@@ -37,15 +43,44 @@ public class User implements Serializable{
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastLoginTime;
 
-    private short userType;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updateTime;
+
+    private Integer userType;
 
     private String preferLanguage;
 
-    private int accepted;
+    private String role="USER";
 
-    private int submitted;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return  AuthorityUtils.commaSeparatedStringToAuthorityList(role);
+    }
 
-    private String bio;
 
-    private boolean sendCode;
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>learn Resources</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <style>
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
+
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <p class="container">
+    <form class="form-signin" th:action="@{login}" method="post">
+        <h2 class="form-signin-heading">用户登录</h2>
+        <div th:if="${param.error}" class="bg-warning">
+            用户名或密码错误
+        </div>
+        <div>
+            <label for="inputUsername" class="sr-only">用户名</label>
+            <input type="username" name="username" id="inputUsername" class="form-control" placeholder="请输入用户名" />
+            <br/>
+            <label for="inputPassword" class="sr-only">密码</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="请输入密码" />
+            <br/>
+            <input type="submit" class="btn btn-lg btn-primary btn-block" value="登录" />
+        </div>
+    </form>
+    </p>
+</body>
+</html>

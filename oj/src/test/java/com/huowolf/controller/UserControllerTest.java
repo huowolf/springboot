@@ -35,7 +35,7 @@ public class UserControllerTest {
     @Test
     public void saveUser() throws Exception{
         mvc.perform(MockMvcRequestBuilders.post("/user/save")
-        .param("userName","zhangsan")
+        .param("username","zhangsan")
         .param("email","zhangsan@163.com")
         .param("password","zhangsan"))
                 .andExpect(MockMvcResultMatchers.handler().handlerType(UserController.class))

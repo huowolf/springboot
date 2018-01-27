@@ -23,18 +23,27 @@ DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE `t_user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(64) NOT NULL,
-  `user_name` varchar(64) NOT NULL,
+  `username` varchar(64) NOT NULL,
   `password` varchar(40) NOT NULL,
   `register_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `last_login_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `last_login_time` timestamp NULL DEFAULT NULL,
   `user_type` tinyint(4) NOT NULL DEFAULT '0',
   `prefer_language` varchar(16) NOT NULL DEFAULT '-1',
-  `accepted` int(11) NOT NULL DEFAULT '0',
-  `submitted` int(11) NOT NULL DEFAULT '0',
-  `bio` varchar(64) DEFAULT NULL,
-  `send_code` tinyint(4) DEFAULT NULL,
+  `role` varchar(255) DEFAULT NULL,
+  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+
+/* Trigger structure for table `t_user` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `update_user_trigger` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `update_user_trigger` BEFORE UPDATE ON `t_user` FOR EACH ROW SET NEW.`update_time` = NOW() */$$
+
+
+DELIMITER ;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
