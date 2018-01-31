@@ -1,6 +1,7 @@
 package com.huowolf.repository;
 
 import com.huowolf.domain.User;
+import com.huowolf.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,6 +21,9 @@ public class UserRepositoryTest {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private UserService userService;
+
 	@Test
 	public void save() {
 		User user = new User();
@@ -36,6 +40,18 @@ public class UserRepositoryTest {
 	public void findAll(){
 	List<User> userList =  userRepository.findAll();
 		log.info(userList.toString());
+	}
+
+	@Test
+	public void saveAdmin() {
+		User user = new User();
+		user.setUsername("admin");
+		user.setPassword("admin");
+		user.setEmail("xxxxx@qq.com");
+		user.setRole("ADMIN");
+		User user1 = userService.save(user);
+		log.info(user1.toString());
+		Assert.assertNotNull(user1);
 	}
 
 }
