@@ -8,6 +8,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+
+/**
+ * 重写该类实现使用数据库登录
+ */
 @Component
 public class MyUserDetailsService implements UserDetailsService{
 
