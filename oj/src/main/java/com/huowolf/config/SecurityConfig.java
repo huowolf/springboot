@@ -37,9 +37,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+        String[] allowUrls = {
+                                "/", "/index",
+                                "/login",
+                                "/randCode",
+                                "/register"};
+
         http
                 .authorizeRequests()
-                .antMatchers("/", "/index","/login","/randCode").permitAll()
+                .antMatchers(allowUrls).permitAll()
                 .anyRequest().authenticated()
                 .and()
                     .addFilterBefore(loginAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)

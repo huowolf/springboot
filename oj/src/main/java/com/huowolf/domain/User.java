@@ -52,6 +52,8 @@ public class User implements Serializable,UserDetails{
 
     private String role="USER";
 
+    private boolean enabled;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return  AuthorityUtils.commaSeparatedStringToAuthorityList(role);

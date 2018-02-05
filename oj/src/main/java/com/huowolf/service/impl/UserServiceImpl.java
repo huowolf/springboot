@@ -41,4 +41,12 @@ public class UserServiceImpl implements UserService {
     public void delete(Integer id) {
         userRepository.delete(id);
     }
+
+
+    @Override
+    public void enable(Integer id) {
+        User user = userRepository.findOne(id);
+        user.setEnabled(true);
+        userRepository.save(user);
+    }
 }

@@ -17,6 +17,7 @@ import java.util.Date;
 
 /**
  *认证成功处理器
+ * 登录成功记录用户ip,更新最后一次登录时间字段
  */
 public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 

@@ -8,9 +8,23 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-
+  thymeleaf:
+    mode: LEGACYHTML5
+  mail:
+    host: smtp.qq.com
+    username: 274956285@qq.com        #发送方的邮箱
+    password: iccsdnjbbzfnbigd        #对于qq邮箱而言 密码指的就是发送方的授权码
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+              enable: true
+              required: true
 
 server:
   context-path: /oj
 logging:
   file: d:/oj.log
+
+

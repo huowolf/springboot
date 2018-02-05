@@ -1,15 +1,22 @@
 package com.huowolf.controller;
 
 import com.huowolf.domain.User;
+import com.huowolf.service.MailService;
 import com.huowolf.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.WebContext;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +26,7 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
+
 
     @RequestMapping("/list")
     public String findAllUser(Model model){
@@ -55,7 +63,7 @@ public class UserController {
         return "user/update";
     }
 
-    @RequestMapping("update")
+    @RequestMapping("/update")
     public String update(User user){
         User user1 = userService.findById(user.getUserId());
         user1.setUsername(user.getUsername());
@@ -65,11 +73,18 @@ public class UserController {
         return "redirect:list";
     }
 
-    @RequestMapping("delete")
+    @RequestMapping("/delete")
     public String delete(Integer id){
         userService.delete(id);
         return "redirect:list";
     }
+
+    @RequestMapping("/enable")
+    public String enable(Integer id){
+        userService.enable(id);
+        return "registerSuccess";
+    }
+
 
 
 }
