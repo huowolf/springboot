@@ -17,5 +17,6 @@ public class passwordEncoderTest {
     public void getPassword(){
         String psd = passwordEncoder.encode("admin");
         System.out.println("psd: "+psd);
+
     }
 }

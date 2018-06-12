@@ -35,7 +35,11 @@ CREATE TABLE `t_user` (
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+CREATE TABLE persistent_logins (
+  username varchar(64) not null,
+  series varchar(64) not null,
+  token varchar(64) not null,
+  last_used timestamp not null,
+  PRIMARY KEY (series)
+);

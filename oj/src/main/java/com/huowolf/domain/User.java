@@ -43,9 +43,9 @@ public class User implements Serializable,UserDetails{
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastLoginTime;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+ /*   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
-
+*/
     private Integer userType;
 
     private String preferLanguage;
