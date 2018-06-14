@@ -10,6 +10,7 @@ spring:
       ddl-auto: none
   thymeleaf:
     mode: LEGACYHTML5
+    cache: false
   mail:
     host: smtp.qq.com
     username: 274956285@qq.com        #发送方的邮箱

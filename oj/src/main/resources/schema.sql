@@ -35,6 +35,7 @@ CREATE TABLE `t_user` (
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `persistent_logins`;
 
 CREATE TABLE persistent_logins (
   username varchar(64) not null,

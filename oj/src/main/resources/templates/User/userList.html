@@ -1,28 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>learn Resources</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
+
+<head th:replace="fragments/common::commonHeader('用户列表')"></head>
 <body>
-<div style="text-align: center;margin:0 auto;width: 800px; ">
+
+<div class="container">
+
+    <!--引入导航条-->
+    <div th:include="fragments/common::commonNav"></div>
+
+
     <h1>用户列表测试</h1>
-    <table width="100%" border="1" cellspacing="1" cellpadding="0">
-        <tr>
-            <td>用户名</td>
-            <td>邮箱</td>
-            <td>注册时间</td>
-            <td colspan="2" align="center">操作</td>
-        </tr>
-        <tr th:each="user : ${userList}">
-            <td th:text="${user.username}"></td>
-            <td th:text="${user.email}"></td>
-            <td th:text="${user.registerTime}"></td>
-            <td><a th:href="@{/user/toUpdate/{id}(id=${user.userId})}">修改</a> </td>
-            <td><a th:href="@{/user/delete(id=${user.userId})}">删除</a> </td>
-        </tr>
-    </table>
-    <div><a th:href="@{/user/toSave}">添加用户</a></div>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>用户名</td>
+                    <td>邮箱</td>
+                    <td>注册时间</td>
+                    <td colspan="2" align="center">操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${userList}">
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.registerTime}"></td>
+                    <td><a th:href="@{/user/toUpdate/{id}(id=${user.userId})}">修改</a> </td>
+                    <td><a th:href="@{/user/delete(id=${user.userId})}">删除</a> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a class="btn btn-primary"  role="button" th:href="@{/user/toSave}">添加用户</a>
+
+
+    <div th:include="fragments/common::commonFooter"></div>
 </div>
 </body>
 </html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns="http://www.w3.org/1999/html">
+<head th:fragment="commonHeader(title)">
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div th:fragment="commonNav">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/oj">Spring boot</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">首页</a></li>
+                    <li><a th:href="@{/user/list}">用户管理</a></li>
+                    <li><a href="#">Contact</a></li>
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="nav-item" sec:authorize="isAnonymous()">
+                        <a th:href="@{/register}" class="nav-link" ><span class="glyphicon glyphicon-user"></span> 注册</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAnonymous()">
+                        <a th:href="@{/login}" class="nav-link" ><span class="glyphicon glyphicon-log-in"></span> 登录</a>
+                    </li>
+
+
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <form th:action="@{/logout}" method="post" class="navbar-form navbar-right" >
+                            <div class="row">
+                                <button type="submit" class="btn btn-link">
+                                    <span class="glyphicon glyphicon-log-out"></span>注销
+                                </button>
+                            </div>
+
+                        </form>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+</div>
+<footer th:fragment="commonFooter">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</footer>
+</body>
+</html>

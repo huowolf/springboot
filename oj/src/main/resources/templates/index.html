@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head>
+<!--<head>
     <title>index</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -11,29 +11,13 @@
            padding-left: 0px;
         }
     </style>
+</head>-->
+<head th:replace="fragments/common::commonHeader('首页')">
 </head>
 <body>
-<nav class="navbar navbar-default bg-light">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">首页</a>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item" sec:authorize="isAnonymous()">
-                <a href="login" class="nav-link" ><span class="glyphicon glyphicon-log-in"></span> 登录</a>
-            </li>
 
+<div th:include="fragments/common::commonNav"></div>
 
-            <li class="nav-item" sec:authorize="isAuthenticated()">
-                <form th:action="@{/logout}" method="post" class="navbar-form navbar-right" >
-                    <span class="glyphicon glyphicon-log-out"> </span>
-                    <input type="submit" value="注销" class="btn btn-link"/>
-                </form>
-            </li>
-        </ul>
-
-    </div>
-</nav>
 
 <h2>这是首页内容</h2>
 <h3 sec:authorize="isAuthenticated()">
